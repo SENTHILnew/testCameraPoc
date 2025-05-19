@@ -30,14 +30,16 @@ export class AppComponent {
     this.showBarcodeScan = true;
     this.ref.detectChanges();
 
+    const playDeviceFacingBack = (devices: any[]) => {
+      // front camera or back camera check here!
+      const device = devices.find((f) =>
+        /back|rear|environment/gi.test(f.label)
+      ); // Default Back Facing Camera
+      this.scannerComponent.playDevice(device ? device.deviceId : devices[0].deviceId);
+    };
 
-
-    this.scannerComponent?.start();
-    this.ref.detectChanges();
-    const devices = this.scannerComponent.devices.value; // or subscribe
-    const device = devices.find(f => (/back|trás|rear|traseira|environment|ambiente/gi.test(f.label))) ?? devices.pop();
-    if (device?.deviceId)
-      this.scannerComponent?.playDevice(device?.deviceId);
+    this.scannerComponent?.start(playDeviceFacingBack).subscribe(
+    );
   }
 
   closBarCodeScan() {
