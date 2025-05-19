@@ -30,12 +30,14 @@ export class AppComponent {
     this.showBarcodeScan = true;
     this.ref.detectChanges();
 
-    const devices = this.scannerComponent.devices.value; // or subscribe
 
+
+    this.scannerComponent?.start();
+    this.ref.detectChanges();
+    const devices = this.scannerComponent.devices.value; // or subscribe
     const device = devices.find(f => (/back|trás|rear|traseira|environment|ambiente/gi.test(f.label))) ?? devices.pop();
     if (device?.deviceId)
       this.scannerComponent?.playDevice(device?.deviceId);
-    this.scannerComponent?.start();
   }
 
   closBarCodeScan() {
