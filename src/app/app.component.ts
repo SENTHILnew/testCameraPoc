@@ -20,6 +20,8 @@ export class AppComponent {
 
   showBarcodeScan = false;
 
+  showCam = false
+
   resultText = '';
 
   constructor(private readonly ref: ChangeDetectorRef) {

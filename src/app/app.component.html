@@ -17,5 +17,21 @@
         <p *ngIf="action.isLoading">Loading....</p>
       </div>
     </div>
+
+    <div class="w-[70rem] h-[35rem]" *ngIf="showCam">
+      <div class="flex items-center justify-center space-x-8 relative">
+        <button (click)="closBarCodeScan()">Close Cam</button>
+        <webcam
+          [height]="500"
+          [width]="500"
+          [allowCameraSwitch]="true"
+        ></webcam>
+        <div
+          class="absolute bottom-[10%] right-1/2 flex items-center justify-center"
+        >
+          <button>Take Picture</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
