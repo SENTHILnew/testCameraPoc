@@ -12,6 +12,7 @@
         <ngx-scanner-qrcode
           #action="scanner"
           (event)="onEvent($event)"
+          facingMode="environment"
         ></ngx-scanner-qrcode>
         <p *ngIf="action.isLoading">Loading....</p>
       </div>
