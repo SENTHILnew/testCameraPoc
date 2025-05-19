@@ -28,7 +28,7 @@ export class AppComponent {
 
   openQrCodeScanner() {
     this.showBarcodeScan = true;
-    this.ref.markForCheck();
+    this.ref.detectChanges();
     this.scannerComponent?.start();
   }
 
